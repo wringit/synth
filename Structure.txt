@@ -1,0 +1,7 @@
+UI
+Just do all quarter notes and go from there, tap to add note
+export 
+Synth
+Thing that takes wave and plays it
+Thing to generate wave 
+Thing to put waves into WAV

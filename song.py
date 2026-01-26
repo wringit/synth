@@ -1,4 +1,5 @@
 import voices
+import builder
 class Song:
 
     def __init__(self,voices):
@@ -8,4 +9,4 @@ class Song:
         self.voices = self.voices + [voices.Voice(oscillator,octave)]
     
     def build(self):
-        pass
+        builder.build(self.voices)

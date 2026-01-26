@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.io import wavfile
-def build(voices, path):
+def build(song, path):
     pass
     #Format: input generators
 

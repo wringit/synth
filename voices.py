@@ -17,13 +17,13 @@ NOTES = {
 
 
 class Voice:
-    def __init__(self, oscillator, octave):
-        self.notes = []
+    def __init__(self, oscillator, octave, notes=[]):
+        self.notes = notes
         self.oscillator = oscillator
         self.multiplier = math.pow(2.0,octave*1.0) # 
     
     def __iter__(self):
-        for note in self.notes():
+        for note in self.notes:
             oscillator = self.oscillator(NOTES[note]*self.multiplier,.5)
             for x in range(11025): ## 44100/4 = quarter second beat
                 yield next(oscillator)

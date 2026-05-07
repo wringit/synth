@@ -1,5 +1,7 @@
 import math
 
+
+
 def sin_oscillation(freq, amp, phi=0, sample_rate=44100):
     om = math.tau*freq # tau=2pi
     phi = phi/360.0*math.tau
@@ -40,3 +42,11 @@ def sawtooth_oscillation(freq, amp, phi=0, sample_rate=44100):
         normalized = (theta + phi) % math.tau
         yield amp * (2 * normalized / math.tau - 1)
         theta += om / sample_rate
+
+
+oscillatorsDict = {
+    "sin": sin_oscillation,
+    "tri": triangle_oscillation,
+    "sqr": square_oscillation,
+    "saw": sawtooth_oscillation
+}

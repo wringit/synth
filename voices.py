@@ -17,7 +17,7 @@ NOTES = {
 
 
 class Voice:
-    def __init__(self, oscillator, octave, notes=[]):
+    def __init__(self, oscillator, octave=0, notes=[]):
         self.notes = notes
         self.oscillator = oscillator
         self.multiplier = math.pow(2.0,octave*1.0) # 

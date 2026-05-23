@@ -1,33 +1,41 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
-import song
-import voices
-import oscillators
+# import song
+# import voices
+# import oscillators
 
 root = Tk(screenName="Tinjug's Music Thing", baseName=None, className="Tk",useTk=1)
 
-def projectWindow(song, name="Untitled"):
+def projectWindow(song=None, name="Untitled"):
     sub = Toplevel(root)
     sub.title(name)
-    sub.geometry()
+    sub.geometry("900x600")
+    
 
+def noteColumn(window):
+    buttons = []
+    for i in range(12):
+        button = Button(window)
+        buttons += [button]
+
+    
 
 barMenu = Menu(root)
 root.config(menu=barMenu)
 
 file = ""
 
-def readSong(path):
-    voices = []
-    with open(path, "r") as f:
-        lines = f.readlines()
-        oscillator = oscillators[lines[0]]
-        del lines[0]
-        for line in lines:
-            voiceArray = line.split()
-            voices = voices + voiceArray
+# def readSong(path):
+#     voices = []
+#     with open(path, "r") as f:
+#         lines = f.readlines()
+#         oscillator = oscillators[lines[0]]
+#         del lines[0]
+#         for line in lines:
+#             voiceArray = line.split()
+#             voices = voices + voiceArray
             
-    song = Song()
+#     song = Song()
 
 def getFile():
     file=askopenfilename()
@@ -38,7 +46,7 @@ fileMenu = Menu(root)
 barMenu.add_cascade(label="File", menu=fileMenu)
 fileMenu.add_command(label="New")
 fileMenu.add_command(label="Open...", command=getFile)
-
+projectWindow()
 
 root.mainloop()
 

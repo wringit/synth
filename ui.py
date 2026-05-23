@@ -10,15 +10,25 @@ def projectWindow(song=None, name="Untitled"):
     sub = Toplevel(root)
     sub.title(name)
     sub.geometry("900x600")
-    
+
 
 def noteColumn(window):
+    column = Frame(window)
     buttons = []
     for i in range(12):
         button = Button(window)
         buttons += [button]
 
+def songProperties(window):
+    propertiesPane = Frame(window)
+    titleLabel = Label(propertiesPane)
+    editButton = Button(propertiesPane, text="Rename")
     
+
+def voiceProperties(window):
+    propertiesPane = Frame(window)
+    volumeScale = Scale(propertiesPane, from_=0, to_=10, orient="vertical")
+    pass
 
 barMenu = Menu(root)
 root.config(menu=barMenu)

@@ -11,8 +11,10 @@ def projectWindow(song=None, name="Untitled"):
     # sub = Toplevel(root)
     # sub.title(name)
     root.geometry("900x600")
-    propertiesPane = songProperties(root)
-    propertiesPane.grid(column=0,row=0)
+    songPropertiesPane = songProperties(root)
+    voicePropertiesPane = voiceProperties(root)
+    songPropertiesPane.grid(column=0,row=0)
+    voicePropertiesPane.grid(column=0,row=1)
 
 def noteColumn(window):
     column = Frame(window)
@@ -40,9 +42,25 @@ def songProperties(window, name="Untitled"):
 
 def voiceProperties(window):
     propertiesPane = Frame(window)
-    
+
     volumeLabel = Label(propertiesPane, text="Volume:")
     volumeScale = Scale(propertiesPane, from_=0, to_=10, orient="vertical")
+
+    oscillatorFrame = Frame(propertiesPane)
+    oscillatorLabel = Label(oscillatorFrame, text="Oscillator:")
+    oscillatorVar = StringVar(oscillatorFrame)
+    oscillatorVar.set("(none)")
+    oscillatorDropdown = OptionMenu(oscillatorFrame, oscillatorVar, "(none)")
+    changeOscillatorButton = Button(oscillatorFrame, text="Change oscillator")
+
+    volumeLabel.pack(side=TOP, pady=4)
+    volumeScale.pack(side=TOP, pady=4)
+    oscillatorLabel.pack(side=LEFT)
+    oscillatorDropdown.pack(side=LEFT, padx=6)
+    changeOscillatorButton.pack(side=LEFT, padx=6)
+    oscillatorFrame.pack(fill=X, pady=8)
+
+    return propertiesPane
 
 barMenu = Menu(root)
 root.config(menu=barMenu)

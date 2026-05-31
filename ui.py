@@ -13,8 +13,11 @@ def projectWindow(song=None, name="Untitled"):
     root.geometry("900x600")
     songPropertiesPane = songProperties(root)
     voicePropertiesPane = voiceProperties(root)
+    column = noteColumn(root)
     songPropertiesPane.grid(column=0,row=0)
     voicePropertiesPane.grid(column=0,row=1)
+    column.grid(column=1,row=0)
+
 
 def noteColumn(window):
     column = Frame(window)
@@ -22,6 +25,11 @@ def noteColumn(window):
     for i in range(12):
         button = Button(column)
         buttons += [button]
+        button.pack()
+    return column
+
+def notesGroup(window):
+    pass
 
 def songProperties(window, name="Untitled"):
     propertiesPane = Frame(window)

@@ -11,6 +11,7 @@ def projectWindow(song=None, name="Untitled"):
     # sub = Toplevel(root)
     # sub.title(name)
     root.geometry("900x600")
+    root.resizable(False,False)
     songPropertiesPane = songProperties(root)
     voicePropertiesPane = voiceProperties(root)
     column = noteColumn(root)
@@ -22,11 +23,15 @@ def projectWindow(song=None, name="Untitled"):
 def noteColumn(window):
     column = Frame(window)
     buttons = []
+    notesDict = {"A": False, "A#": False, "B": False, "C": False, "C#": False, "D": False, "D#": False, "E": False, "F": False, "F#": False, "G": False, "G#": False}
     for i in range(12):
         button = Button(column)
         buttons += [button]
         button.pack()
     return column
+
+def clickNote ():
+    pass
 
 def notesGroup(window):
     pass
@@ -45,6 +50,7 @@ def songProperties(window, name="Untitled"):
     voicesLabel.pack()
     voiceListbox.pack()
     addVoiceButton.pack()
+    
     return propertiesPane
 
 

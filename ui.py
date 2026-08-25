@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
+from notes import NOTES
 # import song
 # import voices
 # import oscillators
@@ -23,7 +24,7 @@ def projectWindow(song=None, name="Untitled"):
 def noteColumn(window):
     column = Frame(window)
     buttons = []
-    notesDict = {"A": False, "A#": False, "B": False, "C": False, "C#": False, "D": False, "D#": False, "E": False, "F": False, "F#": False, "G": False, "G#": False}
+    notesDict = {note: False for note in NOTES.keys()}
     for i in range(12):
         button = Button(column)
         buttons += [button]

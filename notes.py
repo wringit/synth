@@ -15,3 +15,6 @@ class Notes ():
                 'A#': 466.16,
                 'B': 493.88
     }
+
+
+NOTES = Notes.NOTES

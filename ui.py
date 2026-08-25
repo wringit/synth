@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
-from notes import NOTES
+from notes import NOTE_NAMES_LIST
 # import song
 # import voices
 # import oscillators
@@ -15,21 +15,23 @@ def projectWindow(song=None, name="Untitled"):
     root.resizable(False,False)
     songPropertiesPane = songProperties(root)
     voicePropertiesPane = voiceProperties(root)
-    column = noteColumn(root)
+    column = noteColumn(root)[0]
     songPropertiesPane.grid(column=0,row=0)
     voicePropertiesPane.grid(column=0,row=1)
     column.grid(column=1,row=0)
 
 
-def noteColumn(window):
+def noteColumn(window, octave=0):
     column = Frame(window)
     buttons = []
-    notesDict = {note: False for note in NOTES.keys()}
+    notesDict = {note: False for note in NOTE_NAMES_LIST}
+    def toggle_note(key): 
+        notesDict[key] = not notesDict[key]
     for i in range(12):
-        button = Button(column)
+        #button = Button(column, command=(lambda: k=note_names_list[i]: toggle_note(k)))
         buttons += [button]
         button.pack()
-    return column
+    return (column, notesDict)
 
 def clickNote ():
     pass

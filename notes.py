@@ -1,6 +1,4 @@
-
-class Notes ():
-    NOTES = {
+NOTES = {
                 "X": 0.0,
                 'C': 261.63,
                 'C#': 277.18,
@@ -14,7 +12,6 @@ class Notes ():
                 'A': 440.00,
                 'A#': 466.16,
                 'B': 493.88
-    }
+}
 
-
-NOTES = Notes.NOTES
+NOTE_NAMES_LIST = list(NOTES.keys())

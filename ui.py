@@ -18,7 +18,13 @@ def projectWindow(song=None, name="Untitled"):
     column = buttons.ButtonsColumn(root)
     songPropertiesPane.grid(column=0,row=0)
     voicePropertiesPane.grid(column=0,row=1)
-    column.grid(column=1,row=0)
+    column.column.grid(column=1,row=0)
+
+def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
+    # e
+    # editor = Frame(root)
+    # editor
+    pass
 
 def clickNote ():
     pass

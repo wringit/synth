@@ -1,3 +1,5 @@
+# TODO: Refactor renderEditor
+
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 from UIClass import buttons
@@ -18,13 +20,22 @@ def projectWindow(song=None, name="Untitled"):
     column = buttons.ButtonsColumn(root)
     songPropertiesPane.grid(column=0,row=0)
     voicePropertiesPane.grid(column=0,row=1)
+    # Have number of 
     column.column.grid(column=1,row=0)
+
 
 def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
     # e
-    # editor = Frame(root)
-    # editor
-    pass
+    editor = Frame(root)
+    for i in columns:
+        for j in rowsAbove:
+            octave = buttons.ButtonsColumn(editor, rowsAbove - j) 
+            octave.column.grid(column=i,row=j)
+        middleOctave = buttons.ButtonsColumn(editor)
+        middleOctave.column.grid(column=i,row=rowsAbove)
+        for j in rowsBelow:
+            octave = buttons.ButtonsColumn(editor, 0 - j) 
+            octave.column.grid(column=i,row=rowsAbove + rowsBelow +j)
 
 def clickNote ():
     pass

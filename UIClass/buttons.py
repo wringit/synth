@@ -9,15 +9,15 @@ from notes import NOTE_NAMES_LIST
 
 
 class ButtonsColumn:
-    def __init__(self, window, octave=0):
+    def __init__(self, window, octave=0, row=0, column=0):
         self.buttons=[]
         self.window = window
         self.octave = 0
-        self.column = Frame(window)
-
+        self.columnFrame = Frame(window)
+        self.columnFrame.grid(row=row, column=column)
         self.notesDict = {note: False for note in NOTE_NAMES_LIST}
         for i in range(1, len(NOTE_NAMES_LIST)):
-            button = Button(self.column)
+            button = Button(self.columnFrame)
             button.config(command=lambda note=NOTE_NAMES_LIST[i], button=button: self.toggle_note(note, button))
             print(NOTE_NAMES_LIST[i])
             self.buttons += [button]

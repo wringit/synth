@@ -17,25 +17,25 @@ def projectWindow(song=None, name="Untitled"):
     root.resizable(False,False)
     songPropertiesPane = songProperties(root)
     voicePropertiesPane = voiceProperties(root)
-    column = buttons.ButtonsColumn(root)
     songPropertiesPane.grid(column=0,row=0)
     voicePropertiesPane.grid(column=0,row=1)
     # Have number of 
-    column.column.grid(column=1,row=0)
-
+    #buttons.ButtonsColumn(root)
+    renderEditor(1,1,2)
+    
 
 def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
     # e
     editor = Frame(root)
-    for i in columns:
-        for j in rowsAbove:
-            octave = buttons.ButtonsColumn(editor, rowsAbove - j) 
-            octave.column.grid(column=i,row=j)
-        middleOctave = buttons.ButtonsColumn(editor)
-        middleOctave.column.grid(column=i,row=rowsAbove)
-        for j in rowsBelow:
-            octave = buttons.ButtonsColumn(editor, 0 - j) 
-            octave.column.grid(column=i,row=rowsAbove + rowsBelow +j)
+    editor.grid(column=1,row=0)
+    # buttons.ButtonsColumn(editor)
+    for i in range(columns):
+        for j in range(rowsAbove):
+            octave = buttons.ButtonsColumn(editor, rowsAbove - j, j, i) 
+        middleOctave = buttons.ButtonsColumn(editor, 0, rowsAbove, i)
+        for j in range(rowsBelow):
+            octave = buttons.ButtonsColumn(editor, 0 - j, rowsAbove + rowsBelow + j, i)
+    #editor.pack()
 
 def clickNote ():
     pass

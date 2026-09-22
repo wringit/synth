@@ -1,8 +1,10 @@
-# TODO: Refactor renderEditor
+
 
 from tkinter import *
+from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from UIClass import buttons
+from oscillators import oscillatorsDict
 # import song
 # import voices
 # import oscillators
@@ -17,12 +19,23 @@ def projectWindow(song=None, name="Untitled"):
     root.resizable(False,False)
     songPropertiesPane = songProperties(root)
     voicePropertiesPane = voiceProperties(root)
-    songPropertiesPane.grid(column=0,row=0)
-    voicePropertiesPane.grid(column=0,row=1)
+    songPropertiesPane.grid(column=0,row=0, sticky="n")
+    voicePropertiesPane.grid(column=0,row=1, sticky="n")
     # Have number of 
     #buttons.ButtonsColumn(root)
     renderEditor(1,1,2)
-    
+
+def addOscillatorWindow():
+    # TODO: Add padding, grid layout for components, create functionality
+    window = Toplevel(root)
+    options = oscillatorsDict
+
+    typeText = Label(window, text="Type: ")
+    typeCombo = ttk.Combobox(window, values=options)
+
+
+    nameText = Label(window, text="Name: ")
+    nameInput = Entry(window, width=30)
 
 def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
     # e
@@ -37,13 +50,11 @@ def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
             octave = buttons.ButtonsColumn(editor, 0 - j, rowsAbove + rowsBelow + j, i)
     #editor.pack()
 
-def clickNote ():
-    pass
 
-def notesGroup(window):
-    pass
 
 def songProperties(window, name="Untitled"):
+    # TODO: "add voice" button functionality (open window)
+
     propertiesPane = Frame(window)
     titleFrame = Frame(propertiesPane)
     titleLabel = Label(titleFrame,text="Name: " + name)

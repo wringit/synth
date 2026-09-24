@@ -1,30 +1,35 @@
 from tkinter import *
 from tkinter import ttk
 from UIClass import subWindow
+import ui
 from oscillators import oscillatorsDict
 
 options = oscillatorsDict.keys()
 
 class AddOscillatorSubWindow(subWindow.SubWindow):
-    def __init__(self, root):
+    def __init__(self, root, command):
         super().__init__(root)
+        self.command = command
 
+    def addOscillator(self):
+        ui.addOscillator(self.components["nameInput"].get(), self.components["typeCombo"].get())
+        self.setOpenWindowFalse()
 
     def openWindowHelper(self):
         super().openWindowHelper()
         window = self.subWindow
-        typeText = Label(window, text="Type: ")
-        typeCombo = ttk.Combobox(window, values=options)
+        self.components["typeText"] = Label(window, text="Type: ")
+        self.components["typeCombo"] = ttk.Combobox(window, values=list(options))
 
-        nameText = Label(window, text="Name: ")
-        nameInput = Entry(window, width=30)
+        self.components["nameText"] = Label(window, text="Name: ")
+        self.components["nameInput"] = Entry(window, width=30)
 
-        createButton = Button(window, text="Create")
+        self.components["createButton"] = Button(window, text="Create", command=self.command)
 
-        typeText.pack()
-        typeCombo.pack()
-        nameText.pack()
-        nameInput.pack()
-        createButton.pack()
+        self.components["typeText"].pack()
+        self.components["typeCombo"].pack()
+        self.components["nameText"].pack()
+        self.components["nameInput"].pack()
+        self.components["createButton"].pack()
 
         window.resizable(False, False)  

@@ -13,6 +13,16 @@ from oscillators import oscillatorsDict
 root = Tk(screenName="Tinjug's Music Thing", baseName=None, className="Tk",useTk=1)
 root.title("Tinjug's Music Thing")
 
+voices = {
+    
+}
+
+
+def addOscillatorFromWindow(window, name, type):
+    voices[name] = type
+    window.setOpenWindowFalse()
+    # TODO: Replace function from other file with this function, pass in when creating window object and set "create" button command as this 
+
 def projectWindow(song=None, name="Untitled"):
     # sub = Toplevel(root)
     # sub.title(name)
@@ -47,7 +57,6 @@ def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):
 
 
 def songProperties(window, name="Untitled"):
-    # TODO: "add voice" button functionality (open window)
     propertiesPane = Frame(window)
     titleFrame = Frame(propertiesPane)
     titleLabel = Label(titleFrame,text="Name: " + name)

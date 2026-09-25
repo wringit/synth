@@ -37,7 +37,8 @@ def projectWindow(song=None, name="Untitled"):
     renderEditor(1,1,2)
 
 def buildAddOscillatorWindow():
-    window = addOscillatorWindow.AddOscillatorSubWindow(root)
+    #TODO: Get values from inputs
+    window = addOscillatorWindow.AddOscillatorSubWindow(root, lambda window: addOscillatorFromWindow(window, window.components["nameInput"], window.components["typeCombo"]))
     return window
 
 def renderEditor(rowsAbove=0, rowsBelow = 0, columns=1):

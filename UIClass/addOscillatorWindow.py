@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from UIClass import subWindow
-import ui
+#import ui
 from oscillators import oscillatorsDict
 
 options = oscillatorsDict.keys()
@@ -10,10 +10,6 @@ class AddOscillatorSubWindow(subWindow.SubWindow):
     def __init__(self, root, command):
         super().__init__(root)
         self.command = command
-
-    def addOscillator(self):
-        ui.addOscillator(self.components["nameInput"].get(), self.components["typeCombo"].get())
-        self.setOpenWindowFalse()
 
     def openWindowHelper(self):
         super().openWindowHelper()
@@ -24,7 +20,7 @@ class AddOscillatorSubWindow(subWindow.SubWindow):
         self.components["nameText"] = Label(window, text="Name: ")
         self.components["nameInput"] = Entry(window, width=30)
 
-        self.components["createButton"] = Button(window, text="Create", command=self.command)
+        self.components["createButton"] = Button(window, text="Create", command=lambda: self.command(self))
 
         self.components["typeText"].pack()
         self.components["typeCombo"].pack()
